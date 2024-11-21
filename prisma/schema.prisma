@@ -7,12 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id Int @id @unique @default(autoincrement())
-  email String @unique 
-
+model Users {
+  id    Int    @id @unique @default(autoincrement())
+  createdAt DateTime @default(now())
+  email String @unique
+  firstName String 
+  lastName String
+  middleName String?
+  birthYear Int 
+  password String
+  @@index([email, password])
 }
 
-model Host{
+model Hosts {
+  id Int @id @unique @default(autoincrement())
+  createdAt DateTime @default(now())
+}
+
+model Guests{
   id Int @id @unique @default(autoincrement())
 }
